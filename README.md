@@ -132,9 +132,7 @@ lveremove /dev/volgroup0/root_snapshot_20190526
 
 sudo pacman -S zsh zsh-completions grml-zsh-config
 
-
-
-
+chsh -s /usr/bin/zsh
 
 
 
