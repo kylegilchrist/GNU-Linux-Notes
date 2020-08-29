@@ -114,6 +114,20 @@ mount /dev/vg0/lvhome /mnt/home
 
 
 
+#[Verify how much space you have left]
+ vgs
+
+#[Create the snapshot]
+lvcreate -L 5GB -s -n root_snapshot_20190526 /dev/mapper/volgroup0-lv_root
+
+#[List current snapshots]
+ lvs
+
+#[Snapshot restore command]
+lvconvert --merge /dev/volgroup0/root_snapshot_20190526
+
+#[To make a snapshot final, remove it]
+lveremove /dev/volgroup0/root_snapshot_20190526
 
 
 
