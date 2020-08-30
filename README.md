@@ -136,7 +136,10 @@ enable multilib
 
 	pulseaudio-alsa pulseaudio-bluetooth pulseaudio-equalizer pavucontrol
    
-sudo pacman -S waybar wofi mako neofetch wal
+	sudo pacman -S waybar wofi mako neofetch 
+	
+For colors install
+	wal
 
 
 
