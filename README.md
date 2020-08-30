@@ -1,6 +1,6 @@
 # GNU-Linux-Notes
 Arch Linux Install
-reflector —-verbose —-latest 50 —-sort rate -c US(—-save /etc/pacman.d/mirrorlist) 
+	reflector —-verbose —-latest 50 —-sort rate -c US(—-save /etc/pacman.d/mirrorlist) 
 pacman -Syyy
 
 gdisk /dev/sdX
