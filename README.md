@@ -60,57 +60,48 @@ w
 	
 	mkinitcpio -p linux
 
-ln -s /usr/share/zoneinfo/America/New_York /etc/localtime
-hwclock -w —u  (maybe -l if dual booting windows)
+	ln -s /usr/share/zoneinfo/America/New_York /etc/localtime
+	hwclock -w —u 
+(maybe -l if dual booting windows)
 
-passwd
-useradd -m -g users -G wheel black
-passwd black
+	passwd
+	useradd -m -g users -G wheel black
+	passwd black
 
-EDITOR=vim visudo
-	(uncomment the group wheel to execute any command)	
-vim /etc/locale.gen
-	uncomment en_US.UTS-8
-locale-gen
-locale > /etc/locale.conf
+	EDITOR=vim visudo
+(uncomment the group wheel to execute any command)	
+	
+	vim /etc/locale.gen
+uncomment en_US.UTS-8
 
-vim /etc/hostname
+	locale-gen
+	locale > /etc/locale.conf
 
-bootctl —-path=/boot install
+	vim /etc/hostname
 
-vim /boot/loader/loader.conf
-	default arch
-	timeout 3
-	editor 0
+	bootctl —-path=/boot install
 
-blkid | grep crypto >> /boot/loader/entries/arch.conf
-vim /boot/loader/entries/arch.conf
-	title Arch Linux
-	linux /vmlinuz-linux
-	initrd /amd-ucode	.img
-	initrd /initramfs-linux.img
-	options cryptdevice=UUID=[the UUID]:vg0:allow-discards root=/dev/mapper/vg0-lvroot quiet rw
+	vim /boot/loader/loader.conf
+default arch
+timeout 3
+editor 0
 
-vim  /etc/pacman.conf 
-	enable multilib 
+	blkid | grep crypto >> /boot/loader/entries/arch.conf
+	vim /boot/loader/entries/arch.conf
+title Arch Linux
+linux /vmlinuz-linux
+initrd /amd-ucode	.img
+initrd /initramfs-linux.img
+options cryptdevice=UUID=[the UUID]:vg0:allow-discards root=/dev/mapper/vg0-lvroot quiet rw
 
-fallocate -l 2G /swapfile
-mkswap /swapfile
-chmod 600 /swapfile
-echo ‘/swapfile none swap sw 0 0’ >> /etc/fstab
-mount -a
-exit
+	vim  /etc/pacman.conf 
+enable multilib 
 
-unmount -a
-reboot
-
-
-
-
-
-
-
-
+	fallocate -l 2G /swapfile
+	mkswap /swapfile
+	chmod 600 /swapfile
+	echo ‘/swapfile none swap sw 0 0’ >> /etc/fstab
+	mount -a
 
 
 crytsetuo open —-type=luks /dev/sdb2 lvm
@@ -122,13 +113,13 @@ mount /dev/vg0/lvhome /mnt/home
 
 
 #Verify how much space you have left
-vgs
+	vgs
 
 #Create the snapshot
-lvcreate -L 5GB -s -n root_snapshot_20190526 /dev/mapper/volgroup0-lv_root
+	lvcreate -L 5GB -s -n root_snapshot_20190526 /dev/mapper/volgroup0-lv_root
 
 #List current snapshots
- lvs
+ 	lvs
 
 #Snapshot restore command
 lvconvert --merge /dev/volgroup0/root_snapshot_20190526
