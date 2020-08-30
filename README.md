@@ -133,7 +133,7 @@ lveremove /dev/volgroup0/root_snapshot_20190526
 sudo pacman -S zsh zsh-completions grml-zsh-config man-db man-pages
 chsh -s /usr/bin/zsh
 
-    pulseaudio-alsa pulseaudio-bluetooth pulseaudio-equalizer pavucontrol
+	pulseaudio-alsa pulseaudio-bluetooth pulseaudio-equalizer pavucontrol
    
 waybar wofi mako neofetch wal
 
