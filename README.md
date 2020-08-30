@@ -6,6 +6,7 @@ Arch Linux Install
 	pacman -Syyy
 
 	gdisk /dev/sdX
+	
 o
 n ef00 (boot)
 n 8e00 (lvm)
