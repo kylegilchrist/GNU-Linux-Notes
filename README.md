@@ -115,7 +115,7 @@ mount /dev/vg0/lvhome /mnt/home
 
 
 #Verify how much space you have left
- vgs
+vgs
 
 #Create the snapshot
 lvcreate -L 5GB -s -n root_snapshot_20190526 /dev/mapper/volgroup0-lv_root
@@ -130,8 +130,7 @@ lvconvert --merge /dev/volgroup0/root_snapshot_20190526
 lveremove /dev/volgroup0/root_snapshot_20190526
 
 
-sudo pacman -S zsh zsh-completions grml-zsh-config
-
+sudo pacman -S zsh zsh-completions grml-zsh-config man-db man-pages
 chsh -s /usr/bin/zsh
 
 
