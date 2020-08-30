@@ -95,6 +95,7 @@ initrd /initramfs-linux.img
 options cryptdevice=UUID=[the UUID]:vg0:allow-discards root=/dev/mapper/vg0-lvroot quiet rw
 
 	vim  /etc/pacman.conf 
+
 enable multilib 
 
 	fallocate -l 2G /swapfile
@@ -104,36 +105,38 @@ enable multilib
 	mount -a
 
 
-crytsetuo open —-type=luks /dev/sdb2 lvm
-mount /dev/vg0/lvroot /mnt
-mount /dev/sdX1 /mnt/boot
-mount /dev/vg0/lvhome /mnt/home
-
-
-
+	crytsetuo open —-type=luks /dev/sdb2 lvm
+	mount /dev/vg0/lvroot /mnt
+	mount /dev/sdX1 /mnt/boot
+	mount /dev/vg0/lvhome /mnt/home
 
 #Verify how much space you have left
+
 	vgs
 
 #Create the snapshot
+	
 	lvcreate -L 5GB -s -n root_snapshot_20190526 /dev/mapper/volgroup0-lv_root
 
 #List current snapshots
- 	lvs
+ 	
+	lvs
 
 #Snapshot restore command
-lvconvert --merge /dev/volgroup0/root_snapshot_20190526
+	
+	lvconvert --merge /dev/volgroup0/root_snapshot_20190526
 
 #To make a snapshot final, remove it
-lveremove /dev/volgroup0/root_snapshot_20190526
+	
+	lveremove /dev/volgroup0/root_snapshot_20190526
 
 
-sudo pacman -S zsh zsh-completions grml-zsh-config man-db man-pages
-chsh -s /usr/bin/zsh
+	sudo pacman -S zsh zsh-completions grml-zsh-config man-db man-pages
+	chsh -s /usr/bin/zsh
 
 	pulseaudio-alsa pulseaudio-bluetooth pulseaudio-equalizer pavucontrol
    
-waybar wofi mako neofetch wal
+sudo pacman -S waybar wofi mako neofetch wal
 
 
 
